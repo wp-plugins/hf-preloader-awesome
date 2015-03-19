@@ -22,7 +22,7 @@ e.g.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 
-=== Screenshots ===
+== Screenshots ==
 
 1. Instaled Demo
 
