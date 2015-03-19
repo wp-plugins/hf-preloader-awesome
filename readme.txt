@@ -24,7 +24,7 @@ e.g.
 
 == Screenshots ==
 
-1. Instaled Demo
+1. Instaled Demo 
 
 
 == Changelog ==
