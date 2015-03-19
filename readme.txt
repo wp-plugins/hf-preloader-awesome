@@ -6,7 +6,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+This plugin will make awesome style when your Webpage loading. It will help you to stay visitor in your website and also increase your traffic.
 
 == Description ==
 
