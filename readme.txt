@@ -26,9 +26,6 @@ e.g.
 
 1. Instaled Demo
 
-2. Instaled Demo Background wgite
-
-3.Screenshot of option panel $ settings
 
 == Changelog ==
 
