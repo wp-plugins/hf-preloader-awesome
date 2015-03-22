@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: HF-Preloader-Awesome 
-Plugin URI: http://Lazy.org/plugins/Preloder
+Plugin URI: https://wordpress.org/plugins/hf-preloader-awesome/
 Description: For awesome style download & Install it.
 Author: HelpFull(HF) Institute
 Author URI: #
