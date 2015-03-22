@@ -2,7 +2,7 @@
 /*
 Plugin Name: HF-Preloader-Awesome 
 Plugin URI: http://Lazy.org/plugins/Preloder
-Description: This preloader will make awesome style when your Webpage loading. It will help you to stay visitor in your wensite and also increase your traffc.
+Description: For awesome style download & Install it.
 Author: HelpFull(HF) Institute
 Author URI: #
 Version: 1.1.0
