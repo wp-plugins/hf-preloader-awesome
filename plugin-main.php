@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: HF-Preloader-Awesome 
-Plugin URI: https://wordpress.org/plugins/hf-preloader-awesome/
-Description: For awesome style download & Install it.
-Author: HelpFull(HF) Institute
-Author URI: #
-Version: 1.1.0
+Plugin Name: HF-Preloader-awesome
+Plugin URI: http://hf-it.org
+Description: This plugin add preloader in your wordpress site.
+Author: HF Persons
+Author URI: http://hf-it.org
+Version: 1.2
 */
 
     /* Adding Latest jQuery from Wordpress */
@@ -19,20 +19,21 @@ Version: 1.1.0
     define('HF_PRELOADER', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 
 function hf_preloader_css_and_js() {
-   wp_enqueue_script('hf_preloader_pace_js',HF_PRELOADER.'js/pace.min.js',array('jquery'),'0.5.7',false);
-wp_enqueue_script('hf_preloader_lobal_active',HF_PRELOADER.'js/active.js',array('jquery'),'1.0',false);
-   wp_enqueue_script('hf_preloader_global_modernizr',HF_PRELOADER.'js/modernizr.custom.63321.js',
-                     array('jquery'),'2.6.2',false);
+   wp_enqueue_script('hf_preloader_pace_js',HF_PRELOADER.'js/pace.min.js',array('jquery'),'1.0.2',false);
+   wp_enqueue_script('hf_preloader_lobal_active',HF_PRELOADER.'js/active.js',array('jquery'),'1.0',false);
    wp_enqueue_style('hf_preloader_main',HF_PRELOADER.'css/main.css',array(),'1.0','all');
 }
 add_action('wp_enqueue_scripts', 'hf_preloader_css_and_js');
 
 
-   function hf_aleart_add_menu_options() {  
-        add_menu_page( 'Preloader-Settings', 'HF Preloader Settings', 'manage_options','preloader_option', 'hf_preloader_options_panel', plugins_url( '/img/pre.png', __FILE__  ), 5 );
+  
+
+
+    function hf_aleart_add_menu_options() {  
         add_options_page('Preloader Settings', 'HF-Preloader Settings', 'manage_options', 'preloader-settings','hf_preloader_options_panel');  
     }  
     add_action('admin_menu', 'hf_aleart_add_menu_options');
+
 
 
 function hf_wp_color_picker( $hook ) {
@@ -42,12 +43,12 @@ function hf_wp_color_picker( $hook ) {
 
         // Include our custom jQuery file with WordPress Color Picker dependency
         wp_enqueue_script( 'custom-script-handle', plugins_url( '/js/color-pickr.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
-        wp_enqueue_style('hf_admin',HF_PRELOADER.'css/admin.css');                                                 wp_enqueue_script('hf_beefup',HF_PRELOADER.'js/jquery.beefup.min.js',array('jquery'),
-            '1.0.1',false);                                       
+        wp_enqueue_style('hf_admin',HF_PRELOADER.'css/admin.css');                              wp_enqueue_script('hf_beefup',HF_PRELOADER.'js/jquery.beefup.min.js',array('jquery'),'1.0.1',false);
         wp_enqueue_script('hf_pace_admin',HF_PRELOADER.'js/admin.js',array('jquery')); 
+
     }
 }
-add_action( 'admin_enqueue_scripts', 'hf_wp_color_picker' );
+    add_action( 'admin_enqueue_scripts', 'hf_wp_color_picker' );
 
 
 if ( is_admin() ) : // Load only if It is Admmin
@@ -65,29 +66,91 @@ add_action( 'admin_init', 'hf_preloader_register_settings' );
         'preloader_color' => '#fff',
         'progress_color' => '#ccc',
         'hf_preloader_type' => 'r_plane',
+        'hf_pace_options_type' => 'barber'
     );
 
-    $hf_preloader_type1 = array(
-         'rotating_particles' => array(
-            'value' => 'particles',
-            'label' => 'Particles'
-        )      
-    ); 
-    
 
+    $hf_preloader_type = array(
+        'rotating_plane' => array(
+            'value' => 'r_plane',
+            'label' => 'Rotating Plane'
+        ),
+        'double_bounce' => array(
+            'value' => 'd_bounce',
+            'label' => 'Double Bounce'
+        ),  
+         'hf_pre_wave' => array(
+            'value' => 'hf_wave',
+            'label' => 'Wave'
+        ),  
+         'wandering-cubes' => array(
+            'value' => 'wandering_c',
+            'label' => 'Wandering Cubes'
+        ),  
+         'chasing-dots' => array(
+            'value' => 'chasing_dot',
+            'label' => 'Chasing Dots'
+        ),  
+         'cube-grid' => array(
+            'value' => 'cube_g',
+            'label' => 'Cube Grid'
+        )         
+    );
+
+    $hf_pace_options_type = array(
+        'barber_shop_animation' => array(
+            'value' => 'barber',
+            'label' => 'Barber Shop'
+        ),
+        'big_c_animation' => array(
+            'value' => 'bc',
+            'label' => 'Big Counter'
+        ),
+        'loading_bar_animation' => array(
+            'value' => 'loading_bar',
+            'label' => 'Loading Bar'
+        ),          
+        'mac_osx_animation' => array(
+            'value' => 'mac_osx',
+            'label' => 'Mac-Osx'
+        ),  
+        'center_cir_animation' => array(
+            'value' => 'center_cir',
+            'label' => 'Center Circle'
+        ),
+        'center_nu_animation' => array(
+            'value' => 'center_nu',
+            'label' => 'Center Numaric'
+        ),          
+        'center_atom_animation' => array(
+            'value' => 'center_atom',
+            'label' => 'Center Atom'
+        ), 
+        'center_Mini_animation' => array(
+            'value' => 'center_mini',
+            'label' => 'Center Minimul'
+        ), 
+        'center_flash_animation' => array(
+            'value' => 'center_fla',
+            'label' => 'Flash'
+        ), 
+        'center_s_animation' => array(
+            'value' => 'center_sim',
+            'label' => 'Center Simple'
+        ), 
+        
+    );
 
 
 function hf_preloader_options_panel() {
-    global $hf_preloader_g_options, $hf_preloader_type1;
+    global $hf_preloader_g_options, $hf_preloader_type, $hf_pace_options_type;
 
     if ( ! isset( $_REQUEST['updated'] ) )
         $_REQUEST['updated'] = false; // Getting custom data from database ?>
 
     <div class="wrap">
 
-        <h2>HF-Preloader Settings
-        <h4 id="h_dis">! Next version will available soon With a powerfull option panel and it will be totally free. </h4>
-        </h2>
+        <h2>HF-Preloader Settings</h2>
 
     <?php if ( false !== $_REQUEST['updated'] ) : ?>
     <div class="updated fade"><p><strong><?php _e( 'Options saved' ); ?></strong></p></div>
@@ -101,24 +164,49 @@ function hf_preloader_options_panel() {
         including a nonce, a unique number used to ensure the form has been submitted from the admin page
         and not somewhere else,it is most important for database security */ ?>
 
-
 <article class="beefup">
-    <h2 class="beefup-head">Preloader Awesome  Style & News</h2>
+    <h2 class="beefup-head">Page Loading Progress Style</h2>
+    <div class="beefup-body">
+        <div id="pro" class="wp-preloader-single-option">
+			<?php foreach( $hf_pace_options_type as $activate ) : ?>
+           <div class="single_option" <?php checked( $settings['hf_pace_options_type'], $activate['value'] ); ?>>
+            
+			    <input type="radio" id="<?php echo $activate['value']; ?>" name="hf_preloader_options[hf_pace_options_type]" value="<?php esc_attr_e( $activate['value'] ); ?>" <?php checked( $settings['hf_pace_options_type'], $activate['value'] ); ?> />
+            
+			<label class="<?php  echo $activate['value']; ?>" for="<?php echo $activate['value']; ?>"><span id="<?php  echo $activate['value']; ?>" class="label_img"></span> <p><?php echo $activate['label']; ?></p></label>
+			</div>
+			<?php endforeach; ?>		
+		</div>
+		
+<div class="progres_color">
+    <table id="p_color_area" class="form-table">
+       <h2 id="p_color">Progress Style Color Settings</h2>
+        <tr valign="top" id="Pcolor">
+            <th scope="row"><label for="progress_color">Progress  Color</label></th>
+            <td>
+            <input id="progress_color" type="text" name="hf_preloader_options[progress_color]" value="<?php echo stripslashes($settings['progress_color']); ?>" class="color-field" /><p class="description">Select Progress Color here. You can also add html HEX color code.</p> 
+            </td>
+        </tr>
+
+    </table>        
+</div>
+   
+    </div>
+</article>
+<article class="beefup">
+    <h2 class="beefup-head">Preloader Awesome Style</h2>
     <div class="beefup-body">
 		<div class="wp-preloader-single-option">
-			<?php foreach( $hf_preloader_type1 as $activate ) : ?>  
+			<?php foreach( $hf_preloader_type as $activate ) : ?>  
            <div class="single_option" <?php checked( $settings['hf_preloader_type'], $activate['value'] ); ?>>
          
 			    <input type="radio" id="<?php echo $activate['value']; ?>" name="hf_preloader_options[hf_preloader_type]" value="<?php esc_attr_e( $activate['value'] ); ?>" <?php checked( $settings['hf_preloader_type'], $activate['value'] ); ?> />			    
     <label class="<?php echo $activate['value']; ?>" for="<?php echo $activate['value']; ?>"><span id="<?php  echo $activate['value']; ?>" class="label_img"></span> <?php echo $activate['label']; ?>        </label>
             </div>
-			<?php endforeach; ?>
-			<p id="dis" class="description">! Next version will available soon With a powerfull option panel and it will be totally free. Use This Awesome style. Here we set few Example,But In <span>premium</span>  version You will find <span>100+</span> Awesome style & design,<span>Unlimited</span> color with progress Bar.You can <span>change</span> any option as your own. This plugin is light weight more faster, Uer friendly, full responsive and supported all kind of device. If You want to Use More You Can buy Our premium latest version ( You will find this plugin By Search hf-awesome preloader in google search ) Thank You for using this.</p> 		
+			<?php endforeach; ?>		
 		</div>               
     </div>
 </article>
-
-
 
 <article class="beefup">
     <h2 class="beefup-head">Preloader Color Settings</h2>
@@ -135,24 +223,14 @@ function hf_preloader_options_panel() {
     <td>
         <input id="preloader_bg_color" type="text" name="hf_preloader_options[preloader_bg_color]" value="<?php echo stripslashes($settings['preloader_bg_color']); ?>" class="color-field" /><p class="description">Select Preloader Background Color here. You can also add html HEX color code.</p>
     </td>
-</tr>
-    <p id="dis" class="description">! Next version will available soon With a powerfull option panel and it will be totally free. Use This Awesome style. Here we set few Example,But In <span>premium</span>  version You will find <span>100+</span> Awesome style & design,<span>Unlimited</span> color with progress Bar.You can <span>change</span> any option as your own. This plugin is light weight more faster, Uer friendly, full responsive and supported all kind of device. If You want to Use More You Can buy Our premium latest version ( You will find this plugin By Search hf-awesome preloader in google search ) Thank You for using this.</p> 
-    <hr>	
+</tr>	
      </table>        
     </div>
 </article>
 
+
+
         <p class="submit"><input type="submit" class="button-primary" value="Done" /></p>
-        <hr>
-<div class="panel">
-    <p id="panel_img_dis" class="description">[  This Option Panel of our <Span>premium</Span> plugin  ]</p> 
-    <div class="panel_img1">
-
-    </div>
-    <div class="panel_img2">
-
-    </div>
-</div>
     </form>
     </div>
 
@@ -160,7 +238,7 @@ function hf_preloader_options_panel() {
 }
 // validate data options
     function hf_preloader_validate_options( $input ) {
-        global $hf_preloader_g_options, $hf_preloader_type1;
+        global $hf_preloader_g_options, $hf_preloader_type, $hf_pace_options_type;
 
         $settings = get_option( 'hf_preloader_options', $hf_preloader_g_options );
 
@@ -173,33 +251,176 @@ function hf_preloader_options_panel() {
         
         $prev = $settings['layout_only'];
         
-        if ( !array_key_exists( $input['layout_only'], $hf_preloader_type1 ) )
-
+        if ( !array_key_exists( $input['layout_only'], $hf_preloader_type ) )
             
+        if ( !array_key_exists( $input['layout_only'], $hf_pace_options_type ) )
 		$input['layout_only'] = $prev;	
 	
 	return $input;
 }
 endif; 
 
+function pace_animation_css(){
+    global $hf_preloader_g_options; $hf_pace_css_and_color_settings = get_option( 'hf_preloader_options', $hf_preloader_g_options );
+   
+if ( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'bc' ) : 
+    
+wp_enqueue_style('hf_pace_bc', HF_PRELOADER.'css/pace/pace-theme-big-counter.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress:after {background-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>}
+    </style>
+<?php    
+    
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'loading_bar') : 		
+wp_enqueue_style('hf_pace_loading_bar', HF_PRELOADER.'css/pace/pace-theme-loading-bar.css'); 
+?>
+    <style type="text/css">    
+        .pace {background-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>;
+        border-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>
+        }
+        .pace .pace-progress{ color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>}
+    </style>
+<?php
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'mac_osx') : 		
+wp_enqueue_style('hf_mac_osx', HF_PRELOADER.'css/pace/pace-theme-mac-osx.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress {background-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?> !important            color:  <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+                            
+    </style>
+<?php
+    
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'center_cir') : 		
+wp_enqueue_style('hf_center_cir', HF_PRELOADER.'css/pace/pace-theme-center-circle.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress {background: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>}
+    </style>
+<?php
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'center_nu') : 		
+wp_enqueue_style('hf_center_nu', HF_PRELOADER.'css/pace/pace-theme-center-nu.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress {color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    </style>
+<?php
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'center_mini') : 		
+wp_enqueue_style('hf_center_mini', HF_PRELOADER.'css/pace/pace-theme-minimal.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress {background: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    </style>
+<?php
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'center_fla') : 		
+wp_enqueue_style('hf_center_fla', HF_PRELOADER.'css/pace/pace-theme-flash.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress {background: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    .pace .pace-activity {border-top-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important;
+    border-left-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    </style>
+<?php
+
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'center_atom') : 		
+wp_enqueue_style('hf_center_atom', HF_PRELOADER.'css/pace/pace-theme-center-atom.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress:before {color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    .pace .pace-progress:after,.pace .pace-activity:after,.pace .pace-activity:before{border-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    </style>
+<?php
+        elseif( $hf_pace_css_and_color_settings['hf_pace_options_type'] == 'center_sim') : 		
+wp_enqueue_style('hf_center_sim', HF_PRELOADER.'css/pace/pace-theme-center-simple.css'); 
+?>
+    <style type="text/css">    
+    .pace .pace-progress:before {color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    .pace .pace-progress:after,.pace .pace-activity:after,.pace .pace-activity:before{border-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>!important}
+    </style>
+<?php
+    
+        else : 	wp_enqueue_style('hf_pace_barber',HF_PRELOADER.'css/pace/pace-theme-barber-shop.css',array());
+?>
+    <style type="text/css">    
+    .pace .pace-progress { background-color: <?php echo $hf_pace_css_and_color_settings['progress_color']; ?>}
+    </style>
+<?php
+endif;
+}
+add_action('wp_enqueue_scripts','pace_animation_css');
 
 
     function hf_preloader_html() {
         global $hf_preloader_g_options; $hf_pre_loader_ht_n_settings = get_option( 'hf_preloader_options', $hf_preloader_g_options ); 
         
-     
-?> 
+     if( $hf_pre_loader_ht_n_settings['hf_preloader_type'] == 'd_bounce') : 
+
+?>  
     <div class="hf_preloader_container">
         <div class="hf_overlay"></div>
-        <div id="zet">
-            <canvas id="c"></canvas>
-        </div>
-           
-    </div> 
+        <div class="hf_spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>      
+    </div>
 <?php
- 
+  elseif( $hf_pre_loader_ht_n_settings['hf_preloader_type'] == 'hf_wave') : 
+?>  
+    <div class="hf_preloader_container">
+        <div class="hf_overlay"></div>
+        <div class="hf_spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>      
+    </div>
+<?php
+  elseif( $hf_pre_loader_ht_n_settings['hf_preloader_type'] == 'wandering_c') : 
+?>  
+    <div class="hf_preloader_container">
+        <div class="hf_overlay"></div>
+        <div class="hf_spinner"></div>      
+    </div>
+<?php
+  elseif( $hf_pre_loader_ht_n_settings['hf_preloader_type'] == 'chasing_dot') : 
+?>  
+    <div class="hf_preloader_container">
+        <div class="hf_overlay"></div>
+        <div class="hf_spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+        </div>     
+    </div>
+<?php
+  elseif( $hf_pre_loader_ht_n_settings['hf_preloader_type'] == 'cube_g') : 
+?>  
+    <div class="hf_preloader_container">
+        <div class="hf_overlay"></div>
+        <div class="hf_spinner">
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+        </div>    
+    </div>
+<?php
 
-
+      
+else:
+?>       
+    <div class="hf_preloader_container">
+        <div class="hf_overlay"></div>
+        <div class="hf_spinner"></div>      
+    </div>
+<?php
+endif;
     }
     add_action('wp_footer', 'hf_preloader_html');
 
@@ -209,15 +430,53 @@ function add_hf_preloader_data_form_plugin() {
     
     global $hf_preloader_g_options; $hf_pre_loader_n_settings = get_option( 'hf_preloader_options', $hf_preloader_g_options ); 
     
-
-    wp_enqueue_style('hf_preloader_particles',HF_PRELOADER.'css/pre-css/particles.css');   
-wp_enqueue_script('particles',HF_PRELOADER.'js/pre/hfindex.js',array('jquery'));
+if ( $hf_pre_loader_n_settings['hf_preloader_type'] == 'd_bounce') : 
+wp_enqueue_style('hf_preloader_d_bounce',HF_PRELOADER.'css/pre-css/double-bounce.css');
 ?>
     <style type="text/css">    
-       
+        div.double-bounce1, div.double-bounce2 {background-color: <?php echo $hf_pre_loader_n_settings['preloader_color']; ?>}
     </style>
 <?php    
-   
+    elseif( $hf_pre_loader_n_settings['hf_preloader_type'] == 'hf_wave') : 
+wp_enqueue_style('hf_preloader_hf_wave',HF_PRELOADER.'css/pre-css/wave.css');
+?>
+    <style type="text/css">    
+    div.hf_spinner > div {background-color: <?php echo $hf_pre_loader_n_settings['preloader_color']; ?>}
+    </style>
+<?php
+    elseif( $hf_pre_loader_n_settings['hf_preloader_type'] == 'wandering_c') : 
+wp_enqueue_style('hf_preloader_hf_wandering_c',HF_PRELOADER.'css/pre-css/wandering-cubes.css');
+?>
+    <style type="text/css">    
+        div.hf_spinner:before, div.hf_spinner:after {background-color: <?php echo $hf_pre_loader_n_settings['preloader_color']; ?>}
+    </style>
+<?php
+    elseif( $hf_pre_loader_n_settings['hf_preloader_type'] == 'chasing_dot') : 
+wp_enqueue_style('hf_preloader_hf_chasing_dot',HF_PRELOADER.'css/pre-css/chasing-dots.css');
+?>
+    <style type="text/css">    
+        div.dot1, div.dot2 {background-color: <?php echo $hf_pre_loader_n_settings['preloader_color']; ?>}
+    </style>
+<?php
+    elseif( $hf_pre_loader_n_settings['hf_preloader_type'] == 'cube_g') : 
+wp_enqueue_style('hf_preloader_hf_cube_g',HF_PRELOADER.'css/pre-css/cube-grid.css');
+?>
+    <style type="text/css">    
+        div.cube {background-color: <?php echo $hf_pre_loader_n_settings['preloader_color']; ?>}
+    </style>
+<?php
+
+     
+    else:
+wp_enqueue_style('hf_preloader_rotat',HF_PRELOADER.'css/pre-css/rotating.css');
+?>
+    <style type="text/css">    
+        div.hf_spinner {background-color: <?php echo $hf_pre_loader_n_settings['preloader_color']; ?>}
+    </style>
+<?php
+endif;   
+    
+    
 
 ?><style type="text/css">    
         div.hf_overlay {background-color:<?php echo $hf_pre_loader_n_settings['preloader_bg_color']; ?>}
@@ -226,12 +485,6 @@ wp_enqueue_script('particles',HF_PRELOADER.'js/pre/hfindex.js',array('jquery'));
 add_action('wp_head', 'add_hf_preloader_data_form_plugin');
     
     
-
-
-
-
-
-
 
 
 
