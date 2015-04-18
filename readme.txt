@@ -27,6 +27,11 @@ e.g.
 1. Instaled Demo 
 2. Option Panel $ Settings
 3. Option Panel $ Settings details
+4. Live Demo 1
+5. Live Demo 2
+6. Preloader style variation
+7. Preloader Color Settings
+7. Preloader progress Bar style
 
 
 == Changelog ==
