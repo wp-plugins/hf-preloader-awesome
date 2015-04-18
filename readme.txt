@@ -38,9 +38,10 @@ e.g.
 
 == Changelog ==
 
-= 1.0 =
-* Initial Release
-
 = 1.2 =
 * Add more option.
 * More style
+
+= 1.0 =
+* Initial Release
+
