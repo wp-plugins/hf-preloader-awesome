@@ -26,6 +26,7 @@ e.g.
 
 1. Instaled Demo 
 2. Option Panel $ Settings
+3. Option Panel $ Settings details
 
 
 == Changelog ==
