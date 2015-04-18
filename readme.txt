@@ -31,7 +31,9 @@ e.g.
 5. Live Demo 2
 6. Preloader style variation
 7. Preloader Color Settings
-7. Preloader progress Bar style
+8. Preloader progress Bar style
+9. Live Demo 3
+10. Live Demo 4
 
 
 == Changelog ==
