@@ -40,3 +40,7 @@ e.g.
 
 = 1.0 =
 * Initial Release
+
+= 1.2 =
+* Add more option.
+* More style
