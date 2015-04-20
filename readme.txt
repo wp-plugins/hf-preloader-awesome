@@ -33,14 +33,14 @@ e.g.
 7. Preloader Color Settings
 8. Preloader progress Bar style
 9. Live Demo 3
-10. Live Demo 4
+10.Live Demo 4
 
 
 == Changelog ==
 
 = 1.2 =
-* Add more option.
-* More style
+* Added More option.
+* Added More style
 
 = 1.0 =
 * Initial Release
