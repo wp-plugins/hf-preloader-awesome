@@ -12,6 +12,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin will make awesome style when your Webpage loading. It will help you to stay visitor in your website and also increase your traffic.
 
+Live Demo:http://hf-it.org/plugins/hf-preloader-example/
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
